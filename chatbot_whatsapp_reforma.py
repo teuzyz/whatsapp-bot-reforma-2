@@ -26,7 +26,8 @@ def bot():
         )
         bot_reply = response["choices"][0]["message"]["content"]
     except Exception as e:
-        bot_reply = f"Erro: {str(e)}"
+        print("ERRO AO CHAMAR OPENAI:", e)
+        bot_reply = "Erro ao consultar a IA. Verifique a chave da OpenAI ou os logs."
 
     twilio_response = MessagingResponse()
     twilio_response.message(bot_reply)
